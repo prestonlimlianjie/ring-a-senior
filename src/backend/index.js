@@ -27,6 +27,7 @@ const app = express();
 
 // Import routes
 const callsRouter = require('./routes/calls')
+const schedulesRouter = require('./routes/schedules')
 const usersRouter = require('./routes/users')
 
 app.use(express.json({ limit: '10mb'}));
@@ -38,8 +39,9 @@ app.use(cors({
 }))
 
 // Protected routes
-app.use('/users', usersRouter);
 app.use('/calls', callsRouter);
+app.use('/schedules', schedulesRouter);
+app.use('/users', usersRouter);
 
 module.exports = app;
 
