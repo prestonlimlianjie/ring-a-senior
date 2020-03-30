@@ -64,7 +64,8 @@ async function createUser(req, res) {
       phone_number: phoneNumber,
       languages: languages,
       user_type: userType,
-      name
+      name,
+      age
     } = req.body
 
     // Generate userId
@@ -93,7 +94,28 @@ async function createUser(req, res) {
 
 async function updateUser(req, res) {
   try {
-    // TO-DO
+    // TO-DO: Validate req
+    const { user_id: userId } = req.params
+    const { 
+      phone_number: phoneNumber,
+      languages: languages,
+      user_type: userType,
+    } = req.body
+
+    // Put user into Users table
+    const params = {
+      TableName : USERS_TABLE,
+      Item: {
+        user_id: userId,
+        phone_number: phoneNumber,
+        languages: languages,
+        user_type: userType,
+      }
+    };
+    // TO-DO: Use docClient.update
+    await docClient.put(params).promise()
+
+    res.status(200).send({ user_id: userId })
   } catch(err) {
     console.error(err)
     res.status(500).send(err)

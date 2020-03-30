@@ -81,7 +81,10 @@ async function getAvailableCallees(req, res) {
           && getCalleeResponse.Item.user_type === 'callee'
           && _.intersection(getCalleeResponse.Item.languages, callerLanguages).length > 0
 
-        if (validCallee) return getCalleeResponse.Item
+        if (validCallee) return {
+          ...getCalleeResponse.Item,
+          phone_number: undefined
+        }
       } catch (err) {
         throw err
       }

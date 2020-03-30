@@ -5,5 +5,20 @@
 </head>
 <body>
   <h1>Ring a senior</h1>
+  <div id="languagesDiv">
+    <h2>Which of these do you speak?</h2>
+    <form onsubmit="updateUserLanguages()">
+      <input type="checkbox" id="english" name="english" value="english">
+      <label for="english">English</label><br>
+      <input type="checkbox" id="tamil" name="tamil" value="tamil">
+      <label for="tamil">Tamil</label><br>
+      <input type="checkbox" id="mandarin" name="mandarin" value="mandarin">
+      <label for="mandarin">Mandarin</label><br>
+      <input type="checkbox" id="malay" name="malay" value="malay">
+      <label for="malay">Malay</label><br>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  
   <div id="callsDiv"></div>
 </body>
